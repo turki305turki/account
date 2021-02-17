@@ -1,6 +1,6 @@
 try:
 	import random,requests,os
-        r = requests.Session()
+r = requests.Session()
 	os.remove("account.py")
 	print("1-gmail")
 	print("2-hotmail")
