@@ -1,0 +1,87 @@
+try:
+	import random,requests,os
+	os.remove("account.py")
+	print("1-gmail")
+	print("2-hotmail")
+	print("3-icloud")
+	print("4-yahoo")
+	em = input("choic: ")
+	if em == '1':
+		no = "gmail"
+	elif em == "2":
+		no = "hotmail"
+	elif em == "3":
+		no = "icloud"
+	elif em == "4":
+		no = "yahoo"
+	while True:
+		if no == "gmail":
+			t = 6
+		if no == "yahoo":
+			t = 4
+		if no == "hotmail" or no == "icloud":
+			t = 5
+		chars3 = 'qwertyuioplkjhgfdsazxcvbnmhhh'
+		amountt = '1'
+		amountt = int(amountt)
+		length3 = int(t)
+		for pas in range(amountt):
+			pas = ''
+		for itemm in range(length3):
+			pas = ''
+		for itemm in range(length3):
+			pas += random.choice(chars3)
+		email = pas + f"@{no}.com"
+		password = "jxmdnfuc"
+		url = "https://www.instagram.com/accounts/login/ajax/"
+		headers = {
+		"accept":"*/*",
+		"accept-encoding":"gzip, deflate,br",
+		"accept-language": "ar,en-US;q=0.9,en;q=0.8",
+		"content-length": "279",
+		"content-type": "application/x-www-form-urlencoded",
+		"origin": "https://www.instagram.com",
+		"referer": "https://www.instagram.com/",
+		"sec-fetch-dest":"empty",
+		"sec-fetch-site":"same-origin",
+		"user-agent":"Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36",
+		"x-csrftoken": "lih2ypMfhzdqwMbm5jIILqxZDj4zLeCW",
+		"x-ig-app-id": "936619743392459",
+		"x-ig-www-claim": "hmac.AR1_p9SjMFQF73bcZgzygDgxb9yBZUn83e69xoDD2qpSdmtW",
+		"x-instagram-ajax":"901e37113a69",
+		"x-requested-with":"XMLHttpRequest"
+		}
+		data = {"username":email,"enc_password":"#PWD_INSTAGRAM_BROWSER:0:1589682409:"+password,"queryParams":"{}","optIntoOneTap":"false"}
+		login = r.post(url,headers=headers,data=data,allow_redirects=True)
+		sz = (login.text)
+		if '"user":true' in sz and '"status":"ok"' in sz:
+			re = (f"https://odc.officeapps.live.com/odc/emailhrd/getidp?hm=0&emailAddress={email}&_=1604288577990")
+			payload = ''
+			headers = {
+				"Accept": "*/*",
+				"Content-Type": "application/x-www-form-urlencoded",
+				"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36",
+				"Connection": "close",
+				"Host": "odc.officeapps.live.com",
+				"Accept-Encoding": "gzip, deflate",
+				"Referer": "https://odc.officeapps.live.com/odc/v2.0/hrd?rs=ar-sa&Ver=16&app=23&p=6&hm=0",
+				"Accept-Language": "ar,en-US;q=0.9,en;q=0.8",
+				"canary": "BCfKjqOECfmW44Z3Ca7vFrgp9j3V8GQHKh6NnEESrE13SEY/4jyexVZ4Yi8CjAmQtj2uPFZjPt1jjwp8O5MXQ5GelodAON4Jo11skSWTQRzz6nMVUHqa8t1kVadhXFeFk5AsckPKs8yXhk7k4Sdb5jUSpgjQtU2Ydt1wgf3HEwB1VQr+iShzRD0R6C0zHNwmHRnIatjfk0QJpOFHl2zH3uGtioL4SSusd2CO8l4XcCClKmeHJS8U3uyIMJQ8L+tb:2:3c",
+				"uaid": "d06e1498e7ed4def9078bd46883f187b",
+				"Cookie": "xid=d491738a-bb3d-4bd6-b6ba-f22f032d6e67&&RD00155D6F8815&354"
+				}
+			response = requests.get(re, data=payload, headers=headers)
+			text = response.text
+			if "Neither" in text:
+				print("this email avabile: "+email)
+			else:
+				print("this email not avabile: "+email)
+		else:
+			if '"user":false' in sz:
+				op = 0
+			else:
+				if sz.find("message") >= 0:
+					print("in the tool wrong, please start the vpn..")
+					exit()
+except:
+	os.remove("account.py")
