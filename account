@@ -1,10 +1,13 @@
-
 try:
 	import random,requests,os
 	r = requests.Session()
 	os.remove("account.py")
 	print("1-gmail")
-	print("2-hotmail")
+	print("""the best----
+			  |
+			  ↓
+		2-hotmail
+	""")
 	print("3-icloud")
 	print("4-yahoo")
 	em = input("choic: ")
@@ -86,4 +89,5 @@ try:
 					print("in the tool wrong, please start the vpn..")
 					exit()
 except:
+	print()
 	os.remove("account.py")
