@@ -35,7 +35,7 @@ try:
 			pas = ''
 		for itemm in range(length3):
 			pas += random.choice(chars3)
-		email = pas + f"@{no}.com"
+		email = pas + "@"+no+".com"
 		password = "jxmdnfuc"
 		url = "https://www.instagram.com/accounts/login/ajax/"
 		headers = {
