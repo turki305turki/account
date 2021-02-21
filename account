@@ -35,7 +35,7 @@ try:
 			pas = ''
 		for itemm in range(length3):
 			pas += random.choice(chars3)
-		email = pas + "@"+no+".com"
+		email = pas + "@%s.com"%(no)
 		password = "jxmdnfuc"
 		url = "https://www.instagram.com/accounts/login/ajax/"
 		headers = {
@@ -59,7 +59,7 @@ try:
 		login = r.post(url,headers=headers,data=data,allow_redirects=True)
 		sz = (login.text)
 		if '"user":true' in sz and '"status":"ok"' in sz:
-			re = (f"https://odc.officeapps.live.com/odc/emailhrd/getidp?hm=0&emailAddress={email}&_=1604288577990")
+			re = (f"https://odc.officeapps.live.com/odc/emailhrd/getidp?hm=0&emailAddress=%s&_=1604288577990"%(email))
 			payload = ''
 			headers = {
 				"Accept": "*/*",
